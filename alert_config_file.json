@@ -1,0 +1,591 @@
+{
+  "defaultDestinations": {
+    "emails": [
+    ],
+    "snmp": false,
+    "allAdmins": false,
+    "httpServerIds": []
+  },
+  "alerts": [
+    {
+      "type": "ampMalwareDetected",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "ampMalwareBlocked",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "applianceDown",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {
+        "timeout": 60
+      }
+    },
+    {
+      "type": "failoverEvent",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "dhcpNoLeases",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "rogueDhcp",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "ipConflict",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "ip6Conflict",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "dhcp6naRenumber",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "dhcp6pdRenumber",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "cellularUpDown",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "clientConnectivity",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {
+        "clients": []
+      }
+    },
+    {
+      "type": "vrrp",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "vpnConnectivityChange",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "settingsChanged",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "usageAlert",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {
+        "threshold": 314572800,
+        "period": 1200
+      }
+    },
+    {
+      "type": "weeklyUmbrella",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "prefixStarvation",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "gatewayDown",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [
+
+        ],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {
+        "timeout": 60
+      }
+    },
+    {
+      "type": "gatewayToRepeater",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "repeaterDown",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [
+          "test1@test.com"
+        ],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {
+        "timeout": 60
+      }
+    },
+    {
+      "type": "rogueAp",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "snr",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {
+        "selector": "{\"configs\":[]}"
+      }
+    },
+    {
+      "type": "highWirelessUsage",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {
+        "selector": "{\"configs\":[]}"
+      }
+    },
+    {
+      "type": "onboarding",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {
+        "selector": "{\"smartSensitivity\":\"medium\",\"smartEnabled\":true,\"eventReminderPeriodSecs\":10800,\"configs\":[]}"
+      }
+    },
+    {
+      "type": "weeklyPresence",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "uplinkIp6Conflict",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "portDown",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {
+        "timeout": 60,
+        "selector": "any port"
+      }
+    },
+    {
+      "type": "powerSupplyDown",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "rpsBackup",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "udldError",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "portError",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {
+        "selector": "any port"
+      }
+    },
+    {
+      "type": "portSpeed",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {
+        "selector": "any port"
+      }
+    },
+    {
+      "type": "newDhcpServer",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "switchDown",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {
+        "timeout": 60
+      }
+    },
+    {
+      "type": "nodeHardwareFailure",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": true,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "cameraDown",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {
+        "timeout": 60
+      }
+    },
+    {
+      "type": "customMotionAlertRecipients",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "cellularGatewayDown",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "httpServerIds": []
+      },
+      "filters": {
+        "timeout": 60
+      }
+    },
+    {
+      "type": "sensorDown",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "smsNumbers": [],
+        "httpServerIds": []
+      },
+      "filters": {
+        "timeout": 0
+      }
+    },
+    {
+      "type": "sensorBatteryPercentage",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "smsNumbers": [],
+        "httpServerIds": []
+      },
+      "filters": {
+        "threshold": 5
+      }
+    },
+    {
+      "type": "sensorProbeCable",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "smsNumbers": [],
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "sensorWaterCable",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "smsNumbers": [],
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "sensorMagneticTampering",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "smsNumbers": [],
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "sensorBatteryCover",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "smsNumbers": [],
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "sensorUsbPowerCable",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "smsNumbers": [],
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "sensorPowerSavingScheduleSuccessEvent",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "smsNumbers": [],
+        "httpServerIds": []
+      },
+      "filters": {}
+    },
+    {
+      "type": "sensorPowerSavingScheduleFailureEvent",
+      "enabled": false,
+      "alertDestinations": {
+        "emails": [],
+        "snmp": false,
+        "allAdmins": false,
+        "smsNumbers": [],
+        "httpServerIds": []
+      },
+      "filters": {}
+    }
+  ],
+  "muting": {
+    "byPortSchedules": {
+      "enabled": false
+    }
+  }
+}
