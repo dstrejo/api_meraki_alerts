@@ -12,6 +12,9 @@ def get_all_organizations(dashboard):
 def get_networks_in_org(dashboard, org_id):
     return dashboard.organizations.getOrganizationNetworks(org_id)
 
+def filter_networks_by_tag(networks, tag):
+    return [net for net in networks if tag in net.get('tags', [])]
+
 def load_alert_settings_from_file(filepath):
     with open(filepath, 'r') as f:
         return json.load(f)
@@ -73,11 +76,18 @@ def main():
     org_id = orgs[org_index]['id']
 
     networks = get_networks_in_org(dashboard, org_id)
-    print("\nAvailable Networks:")
+
+    tag_filter = input("\nEnter a Network Tag to filter by (or press Enter to skip): ").strip()
+    if tag_filter:
+        networks = filter_networks_by_tag(networks, tag_filter)
+        print(f"\nFiltered Networks with tag '{tag_filter}':")
+    else:
+        print("\nAll Networks:")
+
     for idx, net in enumerate(networks):
         print(f"{idx + 1}: {net['name']} (ID: {net['id']})")
 
-    choice = input("\n Do you want to UPDATE alert settings for ALL networks? (y/n): ").strip().lower()
+    choice = input("\n Do you want to UPDATE alert settings for ALL listed networks? (y/n): ").strip().lower()
     if choice == 'y':
         selected_networks = networks
     else:
@@ -133,14 +143,6 @@ def main():
                 log_result(log_file, f"❌ Skipped updating alerts for {net_name} due to webhook failure.")
                 continue
             webhook_id = webhook_response.get("id")
-
-        # # Inject webhook ID into alert config if applicable
-        # if webhook_id:
-        #     for alert in alert_settings.get("alerts", []):
-        #         destinations = alert.setdefault("alertDestinations", {})
-        #         hooks = destinations.setdefault("httpServerIds", [])
-        #         if webhook_id not in hooks:
-        #             hooks.append(webhook_id)
 
         success = update_network_alert_settings(dashboard, net_id, alert_settings)
         if success:
