@@ -1,6 +1,7 @@
 import json
 import meraki
 import datetime
+import os
 
 def log_result(log_file, message):
     with open(log_file, 'a') as f:
@@ -18,6 +19,23 @@ def filter_networks_by_tag(networks, tag):
 def load_alert_settings_from_file(filepath):
     with open(filepath, 'r') as f:
         return json.load(f)
+
+def backup_alert_settings(dashboard, network_id, net_name, backup_dir):
+    """
+    Fetches current alert settings for a network and writes them to a JSON file.
+    Returns (True, filepath) on success or (False, error_message) on failure.
+    """
+    try:
+        current = dashboard.networks.getNetworkAlertsSettings(network_id)
+        filename = os.path.join(
+            backup_dir,
+            f"{net_name.replace(' ', '_')}_{network_id}_alerts_backup.json"
+        )
+        with open(filename, 'w') as f:
+            json.dump(current, f, indent=2)
+        return True, filename
+    except Exception as e:
+        return False, str(e)
 
 def create_webhook(dashboard, network_id, name, url, shared_secret='defaultSecret123'):
     try:
@@ -80,6 +98,9 @@ def main():
     tag_filter = input("\nEnter a Network Tag to filter by (or press Enter to skip): ").strip()
     if tag_filter:
         networks = filter_networks_by_tag(networks, tag_filter)
+        if not networks:
+            print(f"❌ No networks found with tag '{tag_filter}'.")
+            return
         print(f"\nFiltered Networks with tag '{tag_filter}':")
     else:
         print("\nAll Networks:")
@@ -95,9 +116,12 @@ def main():
         indices = [int(i.strip()) - 1 for i in indices.split(',') if i.strip().isdigit()]
         selected_networks = [networks[i] for i in indices]
 
-    # Prepare log
+    # Prepare log + backup dir
     timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
     log_file = f"alert_update_log_{timestamp}.txt"
+    backup_dir = f"alerts_backups_{timestamp}"
+    os.makedirs(backup_dir, exist_ok=True)
+
     log_result(log_file, f"=== Alert Update Log: {timestamp} ===")
     log_result(log_file, f"Dry Run Mode: {'YES' if dry_run else 'NO'}\n")
 
@@ -131,6 +155,7 @@ def main():
             log_result(log_file, msg)
             continue
 
+        # Create/link webhook if requested
         webhook_id = None
         if use_webhook:
             if not webhook_name:
@@ -144,6 +169,23 @@ def main():
                 continue
             webhook_id = webhook_response.get("id")
 
+        # Backup current alert settings BEFORE updating
+        backed_up, result = backup_alert_settings(dashboard, net_id, net_name, backup_dir)
+        if backed_up:
+            log_result(log_file, f"📦 Backed up current alert settings for '{net_name}' to: {result}")
+        else:
+            log_result(log_file, f"❌ Failed to back up current alert settings for '{net_name}': {result}")
+            # Safety: skip update if we couldn't create a backup
+            continue
+
+        # NOTE: If you want to automatically inject the webhook into the alert config, uncomment and adapt:
+        # if webhook_id:
+        #     for alert in alert_settings.get("alerts", []):
+        #         destinations = alert.setdefault("alertDestinations", {})
+        #         hooks = destinations.setdefault("httpServerIds", [])
+        #         if webhook_id not in hooks:
+        #             hooks.append(webhook_id)
+
         success = update_network_alert_settings(dashboard, net_id, alert_settings)
         if success:
             log_result(log_file, f"✅ Updated alerts for {net_name}")
@@ -151,6 +193,7 @@ def main():
             log_result(log_file, f"❌ Failed to update alerts for {net_name}")
 
     print(f"\n📝 Log saved to: {log_file}")
+    print(f"🗂️ Backups saved in: {backup_dir}")
 
 if __name__ == "__main__":
     main()
